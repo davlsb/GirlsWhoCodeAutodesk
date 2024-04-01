@@ -7,24 +7,33 @@ library = {}
 def print_inventory():
     print("")
     print("Library Inventory:")
-    for title, status in library.items():
-        print(f"{title}: {'checked out' if status else 'on shelf'}")
+    for title, statusArray in library.items():
+        print(f"The book {title}")
+        for idx, status in enumerate(statusArray):  # Removed extra closing parenthesis
+            print(f'   Book number {idx + 1} is {"checked out" if status else "on shelf"}')  # Fixed quotes and parenthesis
 
 # Function to add a new book to the inventory
 def add_book(title):
     print("")
     if title not in library:
-        library[title] = False  # Default status is "on shelf"
+        library[title] = [False]  # Default status is "on shelf"
         print(f"{title} has been added to the inventory.")
     else:
-        print(f"{title} is already in the inventory.")
+        library[title].append(False)
+        print(f"{title} is already in the inventory, we added another one.")
 
-# Function to toggle the status of a book between "on shelf" and "checked out"
+# Function to toggle the status of a book between "on shelf" and "checked out", it'll check out the first available
 def toggle_status(title):
     print("")
     if title in library:
-        library[title] = not library[title]
-        print(f"{title} is now {'checked out' if library[title] else 'on shelf'}")
+        statusArray = library[title]
+        for idx, status in enumerate(statusArray):
+            if not status:  # If the book is on shelf
+                statusArray[idx] = True  # Toggle status to checked out
+                print(f"Book {idx} in {title} is now checked out")
+                break  # Stop after toggling the first available book
+        else:
+            print(f"All books in {title} are already checked out")
     else:
         print(f"{title} is not in the inventory.")
 
