@@ -25,7 +25,34 @@ This program serves as an inventory management system for a library, allowing th
     - **Option 4:** Find the status of a specific book.
     - **Option 5:** Remove a damaged book from the library.
     - **Option 6:** Edit the name of a book in the library.
+    - **Option 7:** Quit the program
 3. Follow the prompts for each option to perform the desired action.
+
+## Functions
+#### Option 1: Add a book
+- Description: Allows the user to add a new book to the library inventory.
+- Function(s) Used: `add_book(title)`
+
+#### Option 2: Check a book in or out
+- Description: Allows the user to toggle the status of a book between "on shelf" and "checked out".
+- Function(s) Used: `toggle_status(title)`
+
+#### Option 3: Print all library books' status
+- Description: Prints the status of all books in the library.
+- Function(s) Used: `print_inventory()`
+
+#### Option 4: Find specific book status
+- Description: Allows the user to find and print the status of a specific book.
+- Function(s) Used: `book_status(title)`
+
+#### Option 5: Remove damaged book from library
+- Description: Allows the user to remove a damaged book from the library inventory.
+- Function(s) Used: `remove_book(newtitle, oldtitle)`
+
+#### Option 6: Edit book name in library
+- Description: Allows the user to edit the title of a book in the library inventory.
+- Function(s) Used: `change_book_name(new_book_name, old_book_name)`
+
 
 ## Acknowledgements
 - This program was created as part of Girls Who Code and Autodesk's Technical Interview Prep bootcamp!
