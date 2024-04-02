@@ -10,7 +10,7 @@ def print_inventory():
     for title, statusArray in library.items():
         print(f"The book {title}")
         for idx, status in enumerate(statusArray):
-            print(f'   Book number {idx + 1} is {"checked out" if status else "on shelf"}')
+            print(f'   Book {idx + 1} is {"checked out" if status else "on shelf"}')
 
 # Function to add a new book to the inventory
 def add_book(title):
@@ -25,7 +25,7 @@ def add_book(title):
 # Function to toggle the status of a book between "on shelf" and "checked out", it'll check out the first available
 def toggle_status(title):
     if title in library:
-        # Add a switch between checking out and checking in
+        # Add a switch between checking out and checking in - will convert to 2 different functions
         checking = input("Input 1 to check it out, or 2 to check it in: ")
         print("")
 
@@ -139,6 +139,14 @@ def main():
             print("Invalid choice. Please enter a valid option.")
         time.sleep(2) 
         print("");
+
+# Tests
+add_book("Bone") # Add book Bone
+add_book("Rainbow Fish") # Add book Rainbow Fish
+add_book("Wild Things") # Add book Wild Things
+change_book_name("New Bone", "Bone") # Change book name to New Bone from Bone
+add_book("New Bone") # Add another book called New Bone
+
 
 # Run the main function
 if __name__ == "__main__":
