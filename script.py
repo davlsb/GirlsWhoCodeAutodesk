@@ -9,8 +9,8 @@ def print_inventory():
     print("Library Inventory:")
     for title, statusArray in library.items():
         print(f"The book {title}")
-        for idx, status in enumerate(statusArray):  # Removed extra closing parenthesis
-            print(f'   Book number {idx + 1} is {"checked out" if status else "on shelf"}')  # Fixed quotes and parenthesis
+        for idx, status in enumerate(statusArray):
+            print(f'   Book number {idx + 1} is {"checked out" if status else "on shelf"}')
 
 # Function to add a new book to the inventory
 def add_book(title):
@@ -26,10 +26,10 @@ def add_book(title):
 def toggle_status(title):
     if title in library:
         # Add a switch between checking out and checking in
-        checking = input("Input 1 to check it OUT, or 2 to check it IN: ")
+        checking = input("Input 1 to check it out, or 2 to check it in: ")
         print("")
 
-        if checking == '1':
+        if checking == '1' or checking == "out":
             statusArray = library[title]
             for idx, status in enumerate(statusArray):
                 if not status:  # If the book is on shelf
@@ -39,13 +39,13 @@ def toggle_status(title):
             else:
                 print(f"All books in {title} are already checked out")
 
-        elif checking == '2':
+        elif checking == '2' or checking == "in":
             idx = input("Please input the ID of the book you want to check in: ") # make sure it's a number
             if idx.isdigit():
                 idx = int(idx)
                 statusArray = library[title]
                 if 1 <= idx <= len(statusArray) and statusArray[idx - 1] == True:
-                    library[title][idx - 1] = False  # Toggle status to check in
+                    library[title][idx - 1] = False  # toggle status to check in
                     print(f"Book {idx} in {title} is now checked back in")
                 else:
                     print(f"The book is already checked in")
